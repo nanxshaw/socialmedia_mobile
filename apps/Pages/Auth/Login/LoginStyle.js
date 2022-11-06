@@ -26,18 +26,19 @@ const styles = StyleSheet.create({
       backgroundColor: "#00BFFF",
       justifyContent: 'center',
       alignItems: 'center',
-      borderRadius:10,
+      borderRadius: 5,
       padding: 10,
       marginBottom:10
     },
     btn_outline:{
         backgroundColor: "#FFF",
         borderWidth: 1,
-        borderRadius:10,
+        borderRadius: 5,
         borderColor: '#c5c5c5',
         justifyContent: 'center',
         alignItems: 'center',
         padding: 10,
+        marginBottom:10
     },
     tx_primary:{
         color:"#FFF",
@@ -46,6 +47,22 @@ const styles = StyleSheet.create({
     tx_out:{
         color:"#666",
         fontWeight:"bold"
+    },
+    btn_google: {
+        padding: 15,
+        backgroundColor: '#F08080',
+        borderRadius: 5,
+        alignItems: 'flex-start',
+        width: '100%',
+        justifyContent: 'center',
+        marginBottom: 10,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    icon_img: {
+        width: 20,
+        height: 20,
+        marginRight:10
     },
 })
 

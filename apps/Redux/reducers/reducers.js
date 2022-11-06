@@ -12,6 +12,12 @@ const rootReducer = (state = dataState, action) => {
                 user: action.user,
                 token: action.token
             }
+        case 'DEL_USER':
+            return {
+                ...state,
+                user:null,
+                token:null
+            }
         default:
             return state;
 

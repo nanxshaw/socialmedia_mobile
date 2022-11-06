@@ -1,5 +1,7 @@
 import axios from 'axios';
-const apiUrl = 'http://localhost:8080/api';
+import { url_link } from '../Config/RouteUrl';
+
+const apiUrl = url_link;
 
 const ApiGet = async (http, token = null) => {
     let options = {
@@ -9,6 +11,7 @@ const ApiGet = async (http, token = null) => {
             'Access-Control-Allow-Origin': '*',
         }
     };
+    console.log(apiUrl + http)
     const request = await axios.get(apiUrl + http, options)
         .then(response => response)
         .catch(error => error.response.data);
@@ -16,10 +19,11 @@ const ApiGet = async (http, token = null) => {
 };
 
 const ApiPost = async (http, payload, token = null, type = 'json') => {
+    console.log(type)
     let options = {
         headers: {
             'Authorization': 'Bearer ' + token,
-            'Content-Type': type == 'json' ?'application/json': 'multipart/form-data',
+            'Content-Type': type == 'json' ? 'application/json' : 'multipart/form-data',
             'Access-Control-Allow-Origin': '*'
         }
     };
@@ -33,7 +37,7 @@ export const ApiPut = (http, payload, token = null, type = 'json') => {
     let options = {
         headers: {
             'Authorization': 'Bearer ' + token,
-            'Content-Type': type == 'json' ?'application/json': 'multipart/form-data',
+            'Content-Type': type == 'json' ? 'application/json' : 'multipart/form-data',
         }
     };
     return axios.put(apiUrl + http, payload, options)

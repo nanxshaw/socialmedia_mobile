@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { View, Text, TextInput, TouchableOpacity, Image, SafeAreaView } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, Image, SafeAreaView, Alert } from 'react-native';
 import RestApi from '../../../Rest/RestApi';
 import styles from './RegisterStyle';
 import ImagePicker from 'react-native-image-crop-picker';
-// import Toast from 'react-native-easy-toast';
 
 class Register extends Component {
   constructor(props) {
@@ -27,27 +26,27 @@ class Register extends Component {
           form.append("email", email)
           form.append("password", password)
           form.append("image", image)
-          RestApi.ApiPost('/register', form).then((res) => {
+          RestApi.ApiPost('/register', form, null,'form').then((res) => {
             if (res.status == 200) {
               this.setState({ loadingBtn: false })
-              // this.toast.show('Register Success!', 1000)
+              Alert.alert('Notice','Register Success!')
               this.props.navigation.pop();
             } else {
               this.setState({ loadingBtn: false })
-              // this.toast.show('404', 1000)
+              Alert.alert('Notice','Error!')
             }
           })
         } else {
           this.setState({ loadingBtn: false })
-          // this.toast.show('Password is empty!', 1000)
+          Alert.alert('Notice','Password is empty!')
         }
       } else {
         this.setState({ loadingBtn: false })
-        // this.toast.show('E-mail is empty!', 1000)
+        Alert.alert('Notice','E-mail is empty!')
       }
     } else {
       this.setState({ loadingBtn: false })
-      // this.toast.show('Username is empty!', 1000)
+      Alert.alert('Notice','Username is empty!')
     }
   }
 
@@ -108,7 +107,7 @@ class Register extends Component {
             placeholder='Password'
             secureTextEntry
             style={styles.in}
-            onChangeText={(pass) => this.setState({ pass })}
+            onChangeText={(password) => this.setState({ password })}
           />
         </View>
         <View style={styles.form_btn}>
@@ -119,7 +118,6 @@ class Register extends Component {
             <Text style={styles.tx_out}>Back to Login</Text>
           </TouchableOpacity>
         </View>
-        {/* <Toast ref={(toast) => this.toast = toast} /> */}
       </SafeAreaView>
     );
   }
